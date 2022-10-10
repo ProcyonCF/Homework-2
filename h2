@@ -1,0 +1,27 @@
+PVector first;
+PVector second;
+
+void setup(){
+  size(900,900);
+  background(255);
+  first = new PVector(0,0);
+  second = new PVector(0,0);
+}
+
+void draw(){
+  PVector target=new PVector(mouseX,mouseY);
+  PVector speed1=PVector.sub(target,first);
+  speed1.mult(0.1);
+  first.add(speed1);
+  
+  PVector speed2=PVector.sub(target,first);
+  speed2.mult(0.01);
+  second.add(speed2);
+  
+  noStroke();
+  stroke(180,60,18,60);
+  line(first.x,first.y,second.x,second.y);
+  line(width-first.x,first.y,width-second.x,second.y);
+  line(first.x,height-first.y,second.x,height-second.y);
+  line(width-first.x,height-first.y,width-second.x,height-second.y);
+}
